@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillMap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="config.local.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body data-page="landing" class="min-h-screen bg-slate-50 text-slate-800 antialiased">
+  <header class="border-b border-slate-200 bg-white">
+    <div class="mx-auto flex max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
+      <a href="index.html" class="text-lg font-bold tracking-tight text-slate-900">
+        SkillMap
+      </a>
+      <nav class="flex items-center gap-1.5 text-sm font-medium sm:gap-2">
+        <a
+          href="index.html"
+          class="rounded-lg bg-slate-100 px-3 py-1.5 text-slate-900 transition"
+        >
+          Beranda
+        </a>
+        <a
+          href="input.html"
+          class="rounded-lg px-3 py-1.5 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+        >
+          Analisis
+        </a>
+        <a
+          href="riwayat.html"
+          class="rounded-lg px-3 py-1.5 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+        >
+          Riwayat
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-10">
+    <section class="space-y-10">
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+        <span class="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">
+          Untuk Mahasiswa Informatika &amp; Job Seeker IT
+        </span>
+        <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Ukur Kesiapan Skill-mu Sebelum Melamar Kerja IT
+        </h1>
+        <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+          Tempel deskripsi lowongan kerja IT yang panjang dan membingungkan. AI akan mengekstrak daftar skill yang dibutuhkan, menghitung persentase kecocokanmu, dan menyusun roadmap belajar untuk skill yang masih kurang.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a
+            href="input.html"
+            class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700"
+          >
+            Mulai Analisis Sekarang
+          </a>
+          <a
+            href="input.html?sample=1"
+            class="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+          >
+            Coba Contoh Lowongan
+          </a>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="text-lg font-bold text-slate-900 sm:text-xl">
+          Cara Kerja dalam 3 Langkah
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-white">
+              1
+            </span>
+            <h3 class="mt-3 text-base font-bold text-slate-900">Tempel Lowongan</h3>
+            <p class="mt-1.5 text-sm text-slate-600">
+              Masukkan teks lowongan kerja IT. AI otomatis memisahkan skill wajib dan nilai tambah per kategori.
+            </p>
+          </div>
+          <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-white">
+              2
+            </span>
+            <h3 class="mt-3 text-base font-bold text-slate-900">Centang Skill</h3>
+            <p class="mt-1.5 text-sm text-slate-600">
+              Tandai skill yang sudah kamu kuasai. Skor kecocokan dihitung otomatis dengan bobot yang jelas.
+            </p>
+          </div>
+          <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-white">
+              3
+            </span>
+            <h3 class="mt-3 text-base font-bold text-slate-900">Ikuti Roadmap</h3>
+            <p class="mt-1.5 text-sm text-slate-600">
+              Lihat prioritas skill yang kurang dan buka roadmap belajar bertahap untuk mengejar ketertinggalan.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <h3 class="text-sm font-bold text-slate-900">Skor Transparan &amp; Deterministik</h3>
+          <p class="mt-1 text-sm text-slate-600">
+            Skill wajib berbobot 2 dan nilai tambah berbobot 1, sehingga persentase kecocokan konsisten dan mudah dipahami.
+          </p>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <h3 class="text-sm font-bold text-slate-900">Riwayat &amp; Cache di Browser</h3>
+          <p class="mt-1 text-sm text-slate-600">
+            Hasil analisis dan roadmap yang sudah dibuat tersimpan di browser agar bisa dibuka ulang kapan saja tanpa login.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
