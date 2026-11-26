@@ -793,31 +793,31 @@ const pageControllers = {
       for (const [cat, skills] of grouped.entries()) {
         if (skills.length === 0) continue;
 
-        const card = el("div", "rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5");
-        const title = el("h2", "text-sm font-bold uppercase tracking-wide text-slate-700", CATEGORY_LABELS[cat]);
+        const card = el("div", "rounded-xl border border-[#22322D] bg-[#131C19] p-4 sm:p-5");
+        const title = el("h2", "text-xs font-bold uppercase tracking-wider text-[#5EEAD4]", CATEGORY_LABELS[cat]);
         const list = el("div", "mt-3 grid gap-2 sm:grid-cols-2");
 
         for (const skill of skills) {
           const label = el(
             "label",
-            "flex cursor-pointer items-center justify-between gap-3 rounded-lg border border-slate-200 px-3 py-2.5 transition hover:bg-slate-50"
+            "flex cursor-pointer items-center justify-between gap-3 rounded-lg border border-[#283B35] bg-[#0C1210]/60 px-3 py-2.5 transition hover:border-[#5EEAD4]/40 hover:bg-[#182420]"
           );
 
           const left = el("div", "flex min-w-0 items-center gap-2.5");
           const checkbox = document.createElement("input");
           checkbox.type = "checkbox";
           checkbox.checked = Boolean(skill.dimiliki);
-          checkbox.className = "h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500";
+          checkbox.className = "h-4 w-4 rounded border-[#283B35] bg-[#0C1210] accent-[#5EEAD4]";
           checkbox.addEventListener("change", () => {
             state.toggleSkill(skill.slug, checkbox.checked);
           });
 
-          const nameSpan = el("span", "truncate text-sm font-medium text-slate-800", skill.nama);
+          const nameSpan = el("span", "truncate text-sm font-medium text-[#F8FAFC]", skill.nama);
           left.append(checkbox, nameSpan);
 
           const badgeClass = skill.wajib
-            ? "shrink-0 rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-semibold text-rose-700"
-            : "shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600";
+            ? "shrink-0 rounded-full bg-rose-500/15 px-2 py-0.5 text-[11px] font-semibold text-rose-300"
+            : "shrink-0 rounded-full bg-[#1E2B27] px-2 py-0.5 text-[11px] font-medium text-[#A7B6B1]";
           const badge = el("span", badgeClass, skill.wajib ? "Wajib" : "Nilai Tambah");
 
           label.append(left, badge);
@@ -875,11 +875,11 @@ const pageControllers = {
 
     labelEl.className = "rounded-full px-3 py-1 text-xs font-semibold ";
     if (match.persen >= 80) {
-      labelEl.className += "bg-emerald-100 text-emerald-800";
+      labelEl.className += "bg-emerald-500/15 text-emerald-300";
     } else if (match.persen >= 50) {
-      labelEl.className += "bg-amber-100 text-amber-800";
+      labelEl.className += "bg-amber-500/15 text-amber-300";
     } else {
-      labelEl.className += "bg-rose-100 text-rose-800";
+      labelEl.className += "bg-rose-500/15 text-rose-300";
     }
 
     const ownedCount = state.analysis.skills.filter((s) => s.dimiliki).length;
@@ -889,21 +889,21 @@ const pageControllers = {
     missingList.textContent = "";
     if (missing.length === 0) {
       missingList.appendChild(
-        el("li", "rounded-lg bg-emerald-50 p-3 text-sm text-emerald-800", "Selamat! Semua skill pada lowongan ini sudah kamu kuasai.")
+        el("li", "rounded-lg border border-emerald-500/30 bg-emerald-950/30 p-3 text-sm text-emerald-300", "Selamat! Semua skill pada lowongan ini sudah kamu kuasai.")
       );
     } else {
       for (const skill of missing) {
         const li = el(
           "li",
-          "flex flex-wrap items-center justify-between gap-2 rounded-lg border border-slate-200 p-3"
+          "flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[#283B35] bg-[#0C1210]/60 p-3"
         );
         const info = el("div", "flex min-w-0 items-center gap-2");
-        const name = el("span", "text-sm font-semibold text-slate-800", skill.nama);
+        const name = el("span", "text-sm font-semibold text-[#F8FAFC]", skill.nama);
         const badge = el(
           "span",
           skill.wajib
-            ? "rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-semibold text-rose-700"
-            : "rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600",
+            ? "rounded-full bg-rose-500/15 px-2 py-0.5 text-[11px] font-semibold text-rose-300"
+            : "rounded-full bg-[#1E2B27] px-2 py-0.5 text-[11px] font-medium text-[#A7B6B1]",
           skill.wajib ? "Wajib" : "Nilai Tambah"
         );
         info.append(name, badge);
@@ -912,7 +912,7 @@ const pageControllers = {
         if (skill.kategori !== "soft_skill") {
           const btn = el(
             "a",
-            "rounded-lg bg-indigo-50 px-3 py-1.5 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-100",
+            "rounded-full bg-[#182420] border border-[#283B35] px-3 py-1.5 text-xs font-semibold text-[#5EEAD4] transition hover:border-[#5EEAD4]/60 hover:bg-[#1D2B26]",
             "Lihat roadmap"
           );
           btn.href = `roadmap.html?skill=${encodeURIComponent(skill.slug)}`;
@@ -927,20 +927,20 @@ const pageControllers = {
     ownedList.textContent = "";
     if (owned.length === 0) {
       ownedList.appendChild(
-        el("li", "rounded-lg bg-slate-50 p-3 text-sm text-slate-500", "Belum ada skill yang dicentang.")
+        el("li", "rounded-lg border border-[#283B35] bg-[#0C1210]/50 p-3 text-sm text-[#A7B6B1]", "Belum ada skill yang dicentang.")
       );
     } else {
       for (const skill of owned) {
         const li = el(
           "li",
-          "flex items-center justify-between gap-2 rounded-lg border border-slate-200 bg-slate-50/50 px-3 py-2"
+          "flex items-center justify-between gap-2 rounded-lg border border-[#283B35] bg-[#0C1210]/60 px-3 py-2"
         );
-        const name = el("span", "text-sm font-medium text-slate-800", skill.nama);
+        const name = el("span", "text-sm font-medium text-[#F8FAFC]", skill.nama);
         const badge = el(
           "span",
           skill.wajib
-            ? "rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-semibold text-emerald-700"
-            : "rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600",
+            ? "rounded-full bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-300"
+            : "rounded-full bg-[#1E2B27] px-2 py-0.5 text-[11px] font-medium text-[#A7B6B1]",
           skill.wajib ? "Wajib" : "Nilai Tambah"
         );
         li.append(name, badge);
@@ -988,17 +988,17 @@ const pageControllers = {
 
       stepsEl.textContent = "";
       for (const step of roadmap.langkah) {
-        const li = el("li", "rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5");
+        const li = el("li", "rounded-xl border border-[#22322D] bg-[#131C19] p-4 sm:p-5");
         const header = el("div", "flex items-center gap-3");
         const num = el(
           "span",
-          "flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-xs font-bold text-white",
+          "flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#5EEAD4] text-xs font-bold text-[#0C1210]",
           step.urutan
         );
-        const title = el("h3", "text-base font-bold text-slate-900", step.judul);
+        const title = el("h3", "text-base font-bold text-[#F8FAFC]", step.judul);
         header.append(num, title);
 
-        const desc = el("p", "mt-2 pl-10 text-sm leading-relaxed text-slate-600", step.deskripsi);
+        const desc = el("p", "mt-2 pl-10 text-sm leading-relaxed text-[#A7B6B1]", step.deskripsi);
         li.append(header, desc);
         stepsEl.appendChild(li);
       }
@@ -1052,16 +1052,16 @@ const pageControllers = {
       for (const item of history) {
         const li = el(
           "li",
-          "flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between"
+          "flex flex-col gap-3 rounded-xl border border-[#22322D] bg-[#131C19] p-4 sm:flex-row sm:items-center sm:justify-between"
         );
 
         const infoBtn = el("button", "min-w-0 flex-1 text-left");
         infoBtn.type = "button";
-        const title = el("p", "truncate text-base font-bold text-slate-900 hover:text-indigo-600", item.posisi);
+        const title = el("p", "truncate text-base font-bold text-[#F8FAFC] hover:text-[#5EEAD4]", item.posisi);
         const dateStr = formatDate(item.createdAt);
         const meta = el(
           "p",
-          "mt-0.5 text-xs text-slate-500",
+          "mt-0.5 text-xs text-[#A7B6B1]",
           `${dateStr} • ${item.jumlahSkill} skill`
         );
         infoBtn.append(title, meta);
@@ -1079,12 +1079,12 @@ const pageControllers = {
         const right = el("div", "flex items-center justify-between gap-3 sm:justify-end");
         const scoreBadge = el(
           "span",
-          "rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-700",
+          "rounded-full bg-[#182420] border border-[#283B35] px-3 py-1 text-xs font-bold text-[#5EEAD4]",
           `${item.persen}%`
         );
         const delBtn = el(
           "button",
-          "rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-600 hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700",
+          "rounded-full border border-[#283B35] px-3 py-1 text-xs font-medium text-[#A7B6B1] hover:border-rose-500/40 hover:bg-rose-950/40 hover:text-rose-300",
           "Hapus"
         );
         delBtn.type = "button";
